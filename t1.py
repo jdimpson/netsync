@@ -5,8 +5,6 @@ import socket
 import netsync
 import netsync.rtp
 
-h = netsync.rtp.header()
-
 cast = "broad"
 print("{}cast".format(cast))
 if   cast == "uni":
@@ -19,7 +17,7 @@ elif cast == "multi":
 port = 6969
 
 sock = netsync.rtp.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 2)
 if   cast == "multi":
 	sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, ttl)
 elif cast == "broad":
